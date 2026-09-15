@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\clsString.obj",
+            "outputs": [
+                "x64\\Debug\\clsString.h.obj.dt.module.json",
+                "x64\\Debug\\clsString.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

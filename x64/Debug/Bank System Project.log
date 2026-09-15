@@ -1,0 +1,28 @@
+﻿  Bank System Project.cpp
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(40,25): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Bank%20System%20Project.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(45,29): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Bank%20System%20Project.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(57,30): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Bank%20System%20Project.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(194,28): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Bank%20System%20Project.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(325,28): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Bank%20System%20Project.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(373,20): warning C4267: 'initializing': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Bank%20System%20Project.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsAddNewClientScreen.h(69,11): warning C4129: 'R': unrecognized character escape sequence
+  (compiling source file 'Bank%20System%20Project.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsTotalBalancesScreen.h(60,88): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'Bank%20System%20Project.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsBankClient.h(320,1): warning C4715: 'clsBankClient::Save': not all control paths return a value
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsUser.h(311,1): warning C4715: 'clsUser::Save': not all control paths return a value
+  Bank System Project.vcxproj -> C:\Users\Domain\source\repos\Bank System Project\x64\Debug\Bank System Project.exe
