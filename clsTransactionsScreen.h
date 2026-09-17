@@ -7,6 +7,8 @@
 #include "clsDepositScreen.h"
 #include "clsWithdrawScreen.h"
 #include "clsTotalBalancesScreen.h"
+#include "clsTransferScreen.h"
+#include "clsTransferLogsScreen.h"
 
 using namespace std;
 
@@ -14,13 +16,13 @@ class clsTransactionsScreen : protected clsScreen{
 
 private :
 
-	enum enTransactionMenueOptions {eDeposit = 1, eWithdraw = 2, eTotalBalances = 3, eMainMenue = 4};
+	enum enTransactionMenueOptions {eDeposit = 1, eWithdraw = 2, eTotalBalances = 3,eTransfer = 4, eTransferLogs = 5,  eMainMenue = 6};
 
 	static short _ReadTransactionMenueOption() {
 
 		short Choise;
-		cout << setw(37) << " " << "Choode what do you want to do ? [1 to 4] ? ";
-		Choise = clsInputValidate::ReadShortNumberBetween(1, 4);
+		cout << setw(37) << " " << "Choode what do you want to do ? [1 to 6] ? ";
+		Choise = clsInputValidate::ReadShortNumberBetween(1, 6);
 
 		return Choise;
 
@@ -30,6 +32,7 @@ private :
 		//cout << "Deposit Screen Will Be Here " << endl;
 		clsDepositScreen::ShowDepositScreen();
 	}
+
 	static void _ShowWithdrawScreen() {
 		//cout << "Withdraw Screen Will Be Here " << endl;
 		clsWithdrawScreen::ShowWithdrawScreen();
@@ -38,6 +41,18 @@ private :
 	static void _ShowTotalBalancesScreen() {
 		//cout << "Total Balances Screen Will Be Here "( << endl;
 		clsTotalBalancesScreen::ShowTotalBalancesScreen();
+	}
+
+	static void _ShowTransferScreen() {
+		//cout << "Transfer Screen will be here " << endl;
+		clsTransferScreen::ShowTransferScreen();
+
+	}
+
+	static void _ShowTransferLogsScreen() {
+		cout << "Transfer Logs Screen will be here " << endl;
+		clsTransferLogsScreen::ShowTransferLogs();
+			 
 	}
 
 	static void _GoBackToTransactionMenueScreen() {
@@ -95,6 +110,32 @@ private :
 			_GoBackToTransactionMenueScreen();
 			
 			break;
+		case enTransactionMenueOptions::eTransfer :
+
+			system("cls");
+
+			clsUtil::_Loading("Transfer Screen Loading");
+
+			system("cls");
+
+			_ShowTransferScreen();
+
+			_GoBackToTransactionMenueScreen();
+			
+			break;
+		case enTransactionMenueOptions::eTransferLogs :
+
+			system("cls");
+
+			clsUtil::_Loading("Transfer Logs Screen Loading");
+
+			system("cls");
+
+			_ShowTransferLogsScreen();
+
+			_GoBackToTransactionMenueScreen();
+			
+			break;
 
 		case enTransactionMenueOptions::eMainMenue:
 
@@ -109,7 +150,7 @@ public :
 
 	static void ShowTransactionMenueScreen() {
 
-		if (!clsScreen::CheckAccessRights(clsUser::enPermissions::pTransaction)) {
+		if (!clsScreen::_CheckAccessRights(clsUser::enPermissions::pTransaction)) {
 			return;
 		}
 
@@ -121,7 +162,9 @@ public :
 		cout << setw(37) << " " << "\t[1] Deposit. " << endl;
 		cout << setw(37) << " " << "\t[2] Withdraw. " << endl;
 		cout << setw(37) << " " << "\t[3] Total Balances. " << endl;
-		cout << setw(37) << " " << "\t[4] Main Menue. " << endl;
+		cout << setw(37) << " " << "\t[4] Transfer. " << endl;
+		cout << setw(37) << " " << "\t[5] Transfer Logs. " << endl;
+		cout << setw(37) << " " << "\t[6] Main Menue. " << endl;
 		cout << setw(37) << " " << "=========================================== " << endl;
 
 

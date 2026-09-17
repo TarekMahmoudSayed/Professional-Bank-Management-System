@@ -44,21 +44,21 @@ public:
 			return false;
 	}
 
-	static bool IsDateBetween(clsDate Date, clsDate From, clsDate To)
+	static bool IsDateBetween(clsDate DateTime, clsDate From, clsDate To)
 	{
 		//Date>=From && Date<=To
-		if ((clsDate::IsDate1AfterDate2(Date, From) || clsDate::IsDate1EqualDate2(Date, From))
+		if ((clsDate::IsDate1AfterDate2(DateTime, From) || clsDate::IsDate1EqualDate2(DateTime, From))
 			&&
-			(clsDate::IsDate1BeforeDate2(Date, To) || clsDate::IsDate1EqualDate2(Date, To))
+			(clsDate::IsDate1BeforeDate2(DateTime, To) || clsDate::IsDate1EqualDate2(DateTime, To))
 			)
 		{
 			return true;
 		}
 
 		//Date>=To && Date<=From
-		if ((clsDate::IsDate1AfterDate2(Date, To) || clsDate::IsDate1EqualDate2(Date, To))
+		if ((clsDate::IsDate1AfterDate2(DateTime, To) || clsDate::IsDate1EqualDate2(DateTime, To))
 			&&
-			(clsDate::IsDate1BeforeDate2(Date, From) || clsDate::IsDate1EqualDate2(Date, From))
+			(clsDate::IsDate1BeforeDate2(DateTime, From) || clsDate::IsDate1EqualDate2(DateTime, From))
 			)
 		{
 			return true;
@@ -145,9 +145,9 @@ public:
 		return Number;
 	}
 
-	static bool IsValideDate(clsDate Date)
+	static bool IsValideDate(clsDate DateTime)
 	{
-		return	clsDate::IsValidDate(Date);
+		return	clsDate::IsValidDate(DateTime);
 	}
 
 };

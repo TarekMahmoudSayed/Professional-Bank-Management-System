@@ -121,7 +121,7 @@ public :
 
 	static void ShowManageUsersMenueScreen() {
 
-		if (!clsScreen::CheckAccessRights(clsUser::enPermissions::pManageUsers)) {
+		if (!clsScreen::_CheckAccessRights(clsUser::enPermissions::pManageUsers)) {
 			return;
 		}
 

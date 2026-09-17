@@ -11,6 +11,7 @@
 #include "clsFindClientScreen.h"
 #include "clsTransactionsScreen.h"
 #include "clsManageUsersScreen.h"
+#include "clsLoginRegisterScreen.h"
 
 using namespace std;
 
@@ -19,13 +20,13 @@ class clsMainScreen : protected clsScreen {
 private:
 
 	enum enMainMenueOptions {eShowClients = 1, eAddNewClient = 2, eDeleteClient = 3, eUpdateClient = 4,
-							eFindClient = 5, eTransactions = 6, eManageUsers = 7, eLogout = 8};
+							eFindClient = 5, eTransactions = 6, eManageUsers = 7,eLoginRegister = 8,  eLogout = 9};
 
 	static short _ReadMainMenueOption() {
 
-		cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 8]? ";
+		cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 9]? ";
 
-		short choise = clsInputValidate::ReadShortNumberBetween(1, 8);
+		short choise = clsInputValidate::ReadShortNumberBetween(1, 9);
 
 		return choise;
 
@@ -62,6 +63,12 @@ private:
 		//cout << "Transactions Screen Will Be Here " << endl;
 
 		clsTransactionsScreen::ShowTransactionMenueScreen();
+
+	}
+
+	static void _ShowLoginRegisterScreen() {
+		//cout << "Login Register Screen Will Be Here " << endl;
+		clsLoginRegisterScreen::ShowLoginRegister();
 
 	}
 
@@ -188,6 +195,19 @@ private:
 			_ShowLogoutScreen();
 
 			break;
+		case enMainMenueOptions::eLoginRegister :
+
+			system("cls");
+			
+			clsUtil::_Loading("Login Register Screen Loading");
+
+			system("cls");
+
+			_ShowLoginRegisterScreen();
+
+			_GoBackToMainMenueScreen();
+
+			break;
 
 		}
 
@@ -210,7 +230,8 @@ public :
 		cout << setw(37) << " " << "\t[5] Find Client. " << endl;
 		cout << setw(37) << " " << "\t[6] Transactions. " << endl;
 		cout << setw(37) << " " << "\t[7] Manage Users. " << endl;
-		cout << setw(37) << " " << "\t[8] Logout. " << endl;
+		cout << setw(37) << " " << "\t[8] Login Register. " << endl;
+		cout << setw(37) << " " << "\t[9] Logout. " << endl;
 		cout << setw(37) << " " << "=========================================== " << endl;
 
 		_PerformMainMenueOptions(_ReadMainMenueOption());

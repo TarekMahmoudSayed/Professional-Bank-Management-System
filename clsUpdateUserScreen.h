@@ -101,6 +101,12 @@ class clsUpdateUserScreen : protected clsScreen{
 			Permissions += clsUser::enPermissions::pManageUsers;
 		}
 
+		cout << "\nShow Login Register [y/n]? ";
+		cin >> Ans;
+		if (tolower(Ans) == 'y') {
+			Permissions += clsUser::enPermissions::pLoginRegister;
+		}
+
 		return Permissions;
 
 	}
@@ -109,7 +115,7 @@ public :
 
 	static void ShowUpdateUser() {
 
-		if (!CheckAccessRights(clsUser::enPermissions::pAddNewClient)) {
+		if (!_CheckAccessRights(clsUser::enPermissions::pAddNewClient)) {
 			return;
 		}
 

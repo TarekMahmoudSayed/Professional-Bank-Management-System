@@ -17,12 +17,79 @@ C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h
 C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(373,20): warning C4267: 'initializing': conversion from 'size_t' to 'short', possible loss of data
   (compiling source file 'Bank%20System%20Project.cpp')
   
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsUser.h(204,9): warning C4240: nonstandard extension used: access to 'clsUser::stLoginRegisterRecord' now defined to be 'public', previously it was defined to be 'private'
+  (compiling source file 'Bank%20System%20Project.cpp')
+      C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsUser.h(13,9):
+      see declaration of 'clsUser::stLoginRegisterRecord'
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsBankClient.h(256,9): warning C4240: nonstandard extension used: access to 'clsBankClient::stTransferLogsRecord' now defined to be 'public', previously it was defined to be 'private'
+  (compiling source file 'Bank%20System%20Project.cpp')
+      C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsBankClient.h(19,9):
+      see declaration of 'clsBankClient::stTransferLogsRecord'
+  
 C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsAddNewClientScreen.h(69,11): warning C4129: 'R': unrecognized character escape sequence
   (compiling source file 'Bank%20System%20Project.cpp')
   
 C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsTotalBalancesScreen.h(60,88): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'Bank%20System%20Project.cpp')
   
-C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsBankClient.h(320,1): warning C4715: 'clsBankClient::Save': not all control paths return a value
-C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsUser.h(311,1): warning C4715: 'clsUser::Save': not all control paths return a value
+  clsDeleteUserScreen.cpp
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(40,25): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'clsDeleteUserScreen.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(45,29): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'clsDeleteUserScreen.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(57,30): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'clsDeleteUserScreen.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(194,28): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'clsDeleteUserScreen.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(325,28): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'clsDeleteUserScreen.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(373,20): warning C4267: 'initializing': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'clsDeleteUserScreen.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsUser.h(204,9): warning C4240: nonstandard extension used: access to 'clsUser::stLoginRegisterRecord' now defined to be 'public', previously it was defined to be 'private'
+  (compiling source file 'clsDeleteUserScreen.cpp')
+      C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsUser.h(13,9):
+      see declaration of 'clsUser::stLoginRegisterRecord'
+  
+  clsTotalBalancesScreen.cpp
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(40,25): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'clsTotalBalancesScreen.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(45,29): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'clsTotalBalancesScreen.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(57,30): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'clsTotalBalancesScreen.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(194,28): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'clsTotalBalancesScreen.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(325,28): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'clsTotalBalancesScreen.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsString.h(373,20): warning C4267: 'initializing': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'clsTotalBalancesScreen.cpp')
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsUser.h(204,9): warning C4240: nonstandard extension used: access to 'clsUser::stLoginRegisterRecord' now defined to be 'public', previously it was defined to be 'private'
+  (compiling source file 'clsTotalBalancesScreen.cpp')
+      C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsUser.h(13,9):
+      see declaration of 'clsUser::stLoginRegisterRecord'
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsBankClient.h(256,9): warning C4240: nonstandard extension used: access to 'clsBankClient::stTransferLogsRecord' now defined to be 'public', previously it was defined to be 'private'
+  (compiling source file 'clsTotalBalancesScreen.cpp')
+      C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsBankClient.h(19,9):
+      see declaration of 'clsBankClient::stTransferLogsRecord'
+  
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsTotalBalancesScreen.h(60,88): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'clsTotalBalancesScreen.cpp')
+  
+  Generating Code...
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsBankClient.h(414,1): warning C4715: 'clsBankClient::Save': not all control paths return a value
+C:\Users\Domain\source\repos\Bank System Project\Bank System Project\clsUser.h(356,1): warning C4715: 'clsUser::Save': not all control paths return a value
   Bank System Project.vcxproj -> C:\Users\Domain\source\repos\Bank System Project\x64\Debug\Bank System Project.exe

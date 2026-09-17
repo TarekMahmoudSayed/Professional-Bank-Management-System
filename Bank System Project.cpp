@@ -3,7 +3,6 @@
 #include "clsLoginScreen.h"
 #include "Global.h"
 
-#include <iomanip>
 
 clsUser CurrentUser = clsUser::Find("", "");
 
@@ -13,7 +12,9 @@ int main() {
 
 
 	while (true) {
-		clsLoginScreen::ShowLoginScreen();
+		if (!(clsLoginScreen::ShowLoginScreen())) {
+			break;
+		}
 	}
 
 	return 0;

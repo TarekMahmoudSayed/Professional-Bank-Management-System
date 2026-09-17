@@ -100,6 +100,12 @@ class clsAddNewUserScreen : protected clsScreen{
 			Permissions += clsUser::enPermissions::pManageUsers;
 		}
 
+		cout << "\nShow Login Register [y/n]? ";
+		cin >> Ans;
+		if (tolower(Ans) == 'y') {
+			Permissions += clsUser::enPermissions::pLoginRegister;
+		}
+
 		return Permissions;
 
 	}

@@ -28,7 +28,7 @@ public :
 
 	static void DeleteClient() {
 
-		if (!clsScreen::CheckAccessRights(clsUser::enPermissions::pDeleteClient)) {
+		if (!clsScreen::_CheckAccessRights(clsUser::enPermissions::pDeleteClient)) {
 			return;
 		}
 

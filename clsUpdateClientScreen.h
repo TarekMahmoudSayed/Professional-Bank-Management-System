@@ -46,7 +46,7 @@ public :
 
 	static void UpdateClient() {
 
-		if (!clsScreen::CheckAccessRights(clsUser::enPermissions::pUpdateClient)) {
+		if (!clsScreen::_CheckAccessRights(clsUser::enPermissions::pUpdateClient)) {
 			return;
 		}
 

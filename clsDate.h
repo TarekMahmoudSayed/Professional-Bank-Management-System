@@ -16,6 +16,9 @@ private:
 	short _Day = 1;
 	short _Month = 1;
 	short _Year = 1900;
+	short _Houre = 0;
+	short _Mintue = 0;
+	short _Second = 0;
 
 public:
 
@@ -26,6 +29,9 @@ public:
 		_Day = now->tm_mday;
 		_Month = now->tm_mon + 1;
 		_Year = now->tm_year + 1900;
+		_Houre = now->tm_hour;
+		_Mintue = now->tm_min;
+		_Second = now->tm_sec;
 	}
 
 	clsDate(string sDate)
@@ -46,6 +52,17 @@ public:
 		_Day = Day;
 		_Month = Month;
 		_Year = Year;
+
+	}
+
+	clsDate(short Day, short Month, short Year, short Houre, short Mintue, short Second) {
+
+		_Day = Day;
+		_Month = Month;
+		_Year = Year;
+		_Houre = Houre;
+		_Mintue = Mintue;
+		_Second = Second;
 
 	}
 
@@ -74,7 +91,37 @@ public:
 	short GetMonth() {
 		return _Month;
 	}
+
 	__declspec(property(get = GetMonth, put = SetMonth)) short Month;
+
+	void SetHoure(short Houre) {
+		_Houre = Houre;
+	}
+
+	short GetHoure() {
+		return _Houre;
+	}
+	__declspec(property(get = GetHoure, put = SetHoure)) short Houre;
+
+	void SetMintue(short Mintue) {
+		_Mintue = Mintue;
+	}
+
+	short GetMintue() {
+		return _Mintue;
+	}
+
+	__declspec(property(get = GetMintue, put = SetMintue)) short Mintue;
+
+	void SetSecond(short Second) {
+		_Second	 = Second;
+	}
+
+	short GetSecond() {
+		return _Second;
+	}
+
+	__declspec(property(get = GetSecond, put = SetSecond)) short Second;
 
 
 	void SetYear(short Year) {
@@ -97,42 +144,45 @@ public:
 		time_t t = time(0);
 		tm* now = localtime(&t);
 
-		short Day, Month, Year;
+		short Day, Month, Year, Houre, Mintue, Second;
 
 		Year = now->tm_year + 1900;
 		Month = now->tm_mon + 1;
 		Day = now->tm_mday;
+		Houre = now->tm_hour;
+		Mintue = now->tm_min;
+		Second = now->tm_sec;
 
-		return clsDate(Day, Month, Year);
+		return clsDate(Day, Month, Year, Houre, Mintue, Second);
 	}
 
 
-	static	bool IsValidDate(clsDate Date)
+	static	bool IsValidDate(clsDate DateTime)
 	{
 
-		if (Date.Day < 1 || Date.Day>31)
+		if (DateTime.Day < 1 || DateTime.Day>31)
 			return false;
 
-		if (Date.Month < 1 || Date.Month>12)
+		if (DateTime.Month < 1 || DateTime.Month>12)
 			return false;
 
-		if (Date.Month == 2)
+		if (DateTime.Month == 2)
 		{
-			if (isLeapYear(Date.Year))
+			if (isLeapYear(DateTime.Year))
 			{
-				if (Date.Day > 29)
+				if (DateTime.Day > 29)
 					return false;
 			}
 			else
 			{
-				if (Date.Day > 28)
+				if (DateTime.Day > 28)
 					return false;
 			}
 		}
 
-		short DaysInMonth = NumberOfDaysInAMonth(Date.Month, Date.Year);
+		short DaysInMonth = NumberOfDaysInAMonth(DateTime.Month, DateTime.Year);
 
-		if (Date.Day > DaysInMonth)
+		if (DateTime.Day > DaysInMonth)
 			return false;
 
 		return true;
@@ -144,9 +194,19 @@ public:
 		return IsValidDate(*this);
 	}
 
-	static string DateToString(clsDate Date)
+	static string DateToString(clsDate DateTime)
 	{
-		return  to_string(Date.Day) + "/" + to_string(Date.Month) + "/" + to_string(Date.Year);
+		return  to_string(DateTime.Day) + "/" + to_string(DateTime.Month) + "/" + to_string(DateTime.Year);
+	}
+
+	static string DateTimeToString(clsDate DateTime)
+	{
+		return  to_string(DateTime.Day) + "/" + to_string(DateTime.Month) + "/" + to_string(DateTime.Year) + " - " + to_string(DateTime._Houre) + ":" + to_string(DateTime._Mintue) + ":" + to_string(DateTime._Second);
+	}
+
+	string DateToStringIncludingTime()
+	{
+		return DateTimeToString(*this);
 	}
 
 	string DateToString()
@@ -420,31 +480,31 @@ public:
 	static clsDate GetDateFromDayOrderInYear(short DateOrderInYear, short Year)
 	{
 
-		clsDate Date;
+		clsDate DateTime;
 		short RemainingDays = DateOrderInYear;
 		short MonthDays = 0;
 
-		Date.Year = Year;
-		Date.Month = 1;
+		DateTime.Year = Year;
+		DateTime.Month = 1;
 
 		while (true)
 		{
-			MonthDays = NumberOfDaysInAMonth(Date.Month, Year);
+			MonthDays = NumberOfDaysInAMonth(DateTime.Month, Year);
 
 			if (RemainingDays > MonthDays)
 			{
 				RemainingDays -= MonthDays;
-				Date.Month++;
+				DateTime.Month++;
 			}
 			else
 			{
-				Date.Day = RemainingDays;
+				DateTime.Day = RemainingDays;
 				break;
 			}
 
 		}
 
-		return Date;
+		return DateTime;
 	}
 
 	void AddDays(short Days)
@@ -505,10 +565,10 @@ public:
 		return  IsDate1EqualDate2(*this, Date2);
 	}
 
-	static bool IsLastDayInMonth(clsDate Date)
+	static bool IsLastDayInMonth(clsDate DateTime)
 	{
 
-		return (Date.Day == NumberOfDaysInAMonth(Date.Month, Date.Year));
+		return (DateTime.Day == NumberOfDaysInAMonth(DateTime.Month, DateTime.Year));
 
 	}
 
@@ -524,28 +584,28 @@ public:
 		return (Month == 12);
 	}
 
-	static clsDate AddOneDay(clsDate Date)
+	static clsDate AddOneDay(clsDate DateTime)
 	{
-		if (IsLastDayInMonth(Date))
+		if (IsLastDayInMonth(DateTime))
 		{
-			if (IsLastMonthInYear(Date.Month))
+			if (IsLastMonthInYear(DateTime.Month))
 			{
-				Date.Month = 1;
-				Date.Day = 1;
-				Date.Year++;
+				DateTime.Month = 1;
+				DateTime.Day = 1;
+				DateTime.Year++;
 			}
 			else
 			{
-				Date.Day = 1;
-				Date.Month++;
+				DateTime.Day = 1;
+				DateTime.Month++;
 			}
 		}
 		else
 		{
-			Date.Day++;
+			DateTime.Day++;
 		}
 
-		return Date;
+		return DateTime;
 	}
 
 	void AddOneDay()
@@ -598,15 +658,15 @@ public:
 	}
 	//above no need to have nonstatic function for the object because it does not depend on any data from it.
 
-	static clsDate IncreaseDateByOneWeek(clsDate& Date)
+	static clsDate IncreaseDateByOneWeek(clsDate& DateTime)
 	{
 
 		for (int i = 1; i <= 7; i++)
 		{
-			Date = AddOneDay(Date);
+			DateTime = AddOneDay(DateTime);
 		}
 
-		return Date;
+		return DateTime;
 	}
 
 	void IncreaseDateByOneWeek()
@@ -614,14 +674,14 @@ public:
 		IncreaseDateByOneWeek(*this);
 	}
 
-	clsDate IncreaseDateByXWeeks(short Weeks, clsDate& Date)
+	clsDate IncreaseDateByXWeeks(short Weeks, clsDate& DateTime)
 	{
 
 		for (short i = 1; i <= Weeks; i++)
 		{
-			Date = IncreaseDateByOneWeek(Date);
+			DateTime = IncreaseDateByOneWeek(DateTime);
 		}
-		return Date;
+		return DateTime;
 	}
 
 	void IncreaseDateByXWeeks(short Weeks)
@@ -629,29 +689,29 @@ public:
 		IncreaseDateByXWeeks(Weeks, *this);
 	}
 
-	clsDate IncreaseDateByOneMonth(clsDate& Date)
+	clsDate IncreaseDateByOneMonth(clsDate& DateTime)
 	{
 
-		if (Date.Month == 12)
+		if (DateTime.Month == 12)
 		{
-			Date.Month = 1;
-			Date.Year++;
+			DateTime.Month = 1;
+			DateTime.Year++;
 		}
 		else
 		{
-			Date.Month++;
+			DateTime.Month++;
 		}
 
 		//last check day in date should not exceed max days in the current month
 		// example if date is 31/1/2022 increasing one month should not be 31/2/2022, it should
 		// be 28/2/2022
-		short NumberOfDaysInCurrentMonth = NumberOfDaysInAMonth(Date.Month, Date.Year);
-		if (Date.Day > NumberOfDaysInCurrentMonth)
+		short NumberOfDaysInCurrentMonth = NumberOfDaysInAMonth(DateTime.Month, DateTime.Year);
+		if (DateTime.Day > NumberOfDaysInCurrentMonth)
 		{
-			Date.Day = NumberOfDaysInCurrentMonth;
+			DateTime.Day = NumberOfDaysInCurrentMonth;
 		}
 
-		return Date;
+		return DateTime;
 	}
 
 	void IncreaseDateByOneMonth()
@@ -661,14 +721,14 @@ public:
 
 	}
 
-	clsDate IncreaseDateByXDays(short Days, clsDate& Date)
+	clsDate IncreaseDateByXDays(short Days, clsDate& DateTime)
 	{
 
 		for (short i = 1; i <= Days; i++)
 		{
-			Date = AddOneDay(Date);
+			DateTime = AddOneDay(DateTime);
 		}
-		return Date;
+		return DateTime;
 	}
 
 	void IncreaseDateByXDays(short Days)
@@ -677,14 +737,14 @@ public:
 		IncreaseDateByXDays(Days, *this);
 	}
 
-	clsDate IncreaseDateByXMonths(short Months, clsDate& Date)
+	clsDate IncreaseDateByXMonths(short Months, clsDate& DateTime)
 	{
 
 		for (short i = 1; i <= Months; i++)
 		{
-			Date = IncreaseDateByOneMonth(Date);
+			DateTime = IncreaseDateByOneMonth(DateTime);
 		}
-		return Date;
+		return DateTime;
 	}
 
 	void IncreaseDateByXMonths(short Months)
@@ -692,10 +752,10 @@ public:
 		IncreaseDateByXMonths(Months, *this);
 	}
 
-	static clsDate IncreaseDateByOneYear(clsDate& Date)
+	static clsDate IncreaseDateByOneYear(clsDate& DateTime)
 	{
-		Date.Year++;
-		return Date;
+		DateTime.Year++;
+		return DateTime;
 	}
 
 	void IncreaseDateByOneYear()
@@ -703,10 +763,10 @@ public:
 		IncreaseDateByOneYear(*this);
 	}
 
-	clsDate IncreaseDateByXYears(short Years, clsDate& Date)
+	clsDate IncreaseDateByXYears(short Years, clsDate& DateTime)
 	{
-		Date.Year += Years;
-		return Date;
+		DateTime.Year += Years;
+		return DateTime;
 
 	}
 
@@ -715,11 +775,11 @@ public:
 		IncreaseDateByXYears(Years);
 	}
 
-	clsDate IncreaseDateByOneDecade(clsDate& Date)
+	clsDate IncreaseDateByOneDecade(clsDate& DateTime)
 	{
 		//Period of 10 years
-		Date.Year += 10;
-		return Date;
+		DateTime.Year += 10;
+		return DateTime;
 	}
 
 	void IncreaseDateByOneDecade()
@@ -727,10 +787,10 @@ public:
 		IncreaseDateByOneDecade(*this);
 	}
 
-	clsDate IncreaseDateByXDecades(short Decade, clsDate& Date)
+	clsDate IncreaseDateByXDecades(short Decade, clsDate& DateTime)
 	{
-		Date.Year += Decade * 10;
-		return Date;
+		DateTime.Year += Decade * 10;
+		return DateTime;
 	}
 
 	void IncreaseDateByXDecades(short Decade)
@@ -738,11 +798,11 @@ public:
 		IncreaseDateByXDecades(Decade, *this);
 	}
 
-	clsDate IncreaseDateByOneCentury(clsDate& Date)
+	clsDate IncreaseDateByOneCentury(clsDate& DateTime)
 	{
 		//Period of 100 years
-		Date.Year += 100;
-		return Date;
+		DateTime.Year += 100;
+		return DateTime;
 	}
 
 	void IncreaseDateByOneCentury()
@@ -750,11 +810,11 @@ public:
 		IncreaseDateByOneCentury(*this);
 	}
 
-	clsDate IncreaseDateByOneMillennium(clsDate& Date)
+	clsDate IncreaseDateByOneMillennium(clsDate& DateTime)
 	{
 		//Period of 1000 years
-		Date.Year += 1000;
-		return Date;
+		DateTime.Year += 1000;
+		return DateTime;
 	}
 
 	clsDate IncreaseDateByOneMillennium()
@@ -762,29 +822,29 @@ public:
 		IncreaseDateByOneMillennium(*this);
 	}
 
-	static clsDate DecreaseDateByOneDay(clsDate Date)
+	static clsDate DecreaseDateByOneDay(clsDate DateTime)
 	{
-		if (Date.Day == 1)
+		if (DateTime.Day == 1)
 		{
-			if (Date.Month == 1)
+			if (DateTime.Month == 1)
 			{
-				Date.Month = 12;
-				Date.Day = 31;
-				Date.Year--;
+				DateTime.Month = 12;
+				DateTime.Day = 31;
+				DateTime.Year--;
 			}
 			else
 			{
 
-				Date.Month--;
-				Date.Day = NumberOfDaysInAMonth(Date.Month, Date.Year);
+				DateTime.Month--;
+				DateTime.Day = NumberOfDaysInAMonth(DateTime.Month, DateTime.Year);
 			}
 		}
 		else
 		{
-			Date.Day--;
+			DateTime.Day--;
 		}
 
-		return Date;
+		return DateTime;
 	}
 
 	void DecreaseDateByOneDay()
@@ -792,15 +852,15 @@ public:
 		DecreaseDateByOneDay(*this);
 	}
 
-	static clsDate DecreaseDateByOneWeek(clsDate& Date)
+	static clsDate DecreaseDateByOneWeek(clsDate& DateTime)
 	{
 
 		for (int i = 1; i <= 7; i++)
 		{
-			Date = DecreaseDateByOneDay(Date);
+			DateTime = DecreaseDateByOneDay(DateTime);
 		}
 
-		return Date;
+		return DateTime;
 	}
 
 	void DecreaseDateByOneWeek()
@@ -808,14 +868,14 @@ public:
 		DecreaseDateByOneWeek(*this);
 	}
 
-	static clsDate DecreaseDateByXWeeks(short Weeks, clsDate& Date)
+	static clsDate DecreaseDateByXWeeks(short Weeks, clsDate& DateTime)
 	{
 
 		for (short i = 1; i <= Weeks; i++)
 		{
-			Date = DecreaseDateByOneWeek(Date);
+			DateTime = DecreaseDateByOneWeek(DateTime);
 		}
-		return Date;
+		return DateTime;
 	}
 
 	void DecreaseDateByXWeeks(short Weeks)
@@ -823,29 +883,29 @@ public:
 		DecreaseDateByXWeeks(Weeks, *this);
 	}
 
-	static clsDate DecreaseDateByOneMonth(clsDate& Date)
+	static clsDate DecreaseDateByOneMonth(clsDate& DateTime)
 	{
 
-		if (Date.Month == 1)
+		if (DateTime.Month == 1)
 		{
-			Date.Month = 12;
-			Date.Year--;
+			DateTime.Month = 12;
+			DateTime.Year--;
 		}
 		else
-			Date.Month--;
+			DateTime.Month--;
 
 
 		//last check day in date should not exceed max days in the current month
 	   // example if date is 31/3/2022 decreasing one month should not be 31/2/2022, it should
 	   // be 28/2/2022
-		short NumberOfDaysInCurrentMonth = NumberOfDaysInAMonth(Date.Month, Date.Year);
-		if (Date.Day > NumberOfDaysInCurrentMonth)
+		short NumberOfDaysInCurrentMonth = NumberOfDaysInAMonth(DateTime.Month, DateTime.Year);
+		if (DateTime.Day > NumberOfDaysInCurrentMonth)
 		{
-			Date.Day = NumberOfDaysInCurrentMonth;
+			DateTime.Day = NumberOfDaysInCurrentMonth;
 		}
 
 
-		return Date;
+		return DateTime;
 	}
 
 	void DecreaseDateByOneMonth()
@@ -853,14 +913,14 @@ public:
 		DecreaseDateByOneMonth(*this);
 	}
 
-	static clsDate DecreaseDateByXDays(short Days, clsDate& Date)
+	static clsDate DecreaseDateByXDays(short Days, clsDate& DateTime)
 	{
 
 		for (short i = 1; i <= Days; i++)
 		{
-			Date = DecreaseDateByOneDay(Date);
+			DateTime = DecreaseDateByOneDay(DateTime);
 		}
-		return Date;
+		return DateTime;
 	}
 
 	void DecreaseDateByXDays(short Days)
@@ -868,14 +928,14 @@ public:
 		DecreaseDateByXDays(Days, *this);
 	}
 
-	static clsDate DecreaseDateByXMonths(short Months, clsDate& Date)
+	static clsDate DecreaseDateByXMonths(short Months, clsDate& DateTime)
 	{
 
 		for (short i = 1; i <= Months; i++)
 		{
-			Date = DecreaseDateByOneMonth(Date);
+			DateTime = DecreaseDateByOneMonth(DateTime);
 		}
-		return Date;
+		return DateTime;
 	}
 
 	void DecreaseDateByXMonths(short Months)
@@ -883,11 +943,11 @@ public:
 		DecreaseDateByXMonths(Months, *this);
 	}
 
-	static clsDate DecreaseDateByOneYear(clsDate& Date)
+	static clsDate DecreaseDateByOneYear(clsDate& DateTime)
 	{
 
-		Date.Year--;
-		return Date;
+		DateTime.Year--;
+		return DateTime;
 	}
 
 	void DecreaseDateByOneYear()
@@ -895,11 +955,11 @@ public:
 		DecreaseDateByOneYear(*this);
 	}
 
-	static clsDate DecreaseDateByXYears(short Years, clsDate& Date)
+	static clsDate DecreaseDateByXYears(short Years, clsDate& DateTime)
 	{
 
-		Date.Year -= Years;
-		return Date;
+		DateTime.Year -= Years;
+		return DateTime;
 	}
 
 	void DecreaseDateByXYears(short Years)
@@ -907,11 +967,11 @@ public:
 		DecreaseDateByXYears(Years, *this);
 	}
 
-	static clsDate DecreaseDateByOneDecade(clsDate& Date)
+	static clsDate DecreaseDateByOneDecade(clsDate& DateTime)
 	{
 		//Period of 10 years
-		Date.Year -= 10;
-		return Date;
+		DateTime.Year -= 10;
+		return DateTime;
 	}
 
 	void DecreaseDateByOneDecade()
@@ -919,11 +979,11 @@ public:
 		DecreaseDateByOneDecade(*this);
 	}
 
-	static clsDate DecreaseDateByXDecades(short Decades, clsDate& Date)
+	static clsDate DecreaseDateByXDecades(short Decades, clsDate& DateTime)
 	{
 
-		Date.Year -= Decades * 10;
-		return Date;
+		DateTime.Year -= Decades * 10;
+		return DateTime;
 	}
 
 	void DecreaseDateByXDecades(short Decades)
@@ -931,11 +991,11 @@ public:
 		DecreaseDateByXDecades(Decades, *this);
 	}
 
-	static clsDate DecreaseDateByOneCentury(clsDate& Date)
+	static clsDate DecreaseDateByOneCentury(clsDate& DateTime)
 	{
 		//Period of 100 years
-		Date.Year -= 100;
-		return Date;
+		DateTime.Year -= 100;
+		return DateTime;
 	}
 
 	void DecreaseDateByOneCentury()
@@ -943,11 +1003,11 @@ public:
 		DecreaseDateByOneCentury(*this);
 	}
 
-	static clsDate DecreaseDateByOneMillennium(clsDate& Date)
+	static clsDate DecreaseDateByOneMillennium(clsDate& DateTime)
 	{
 		//Period of 1000 years
-		Date.Year -= 1000;
-		return Date;
+		DateTime.Year -= 1000;
+		return DateTime;
 	}
 
 	void DecreaseDateByOneMillennium()
@@ -956,9 +1016,9 @@ public:
 	}
 
 
-	static short IsEndOfWeek(clsDate Date)
+	static short IsEndOfWeek(clsDate DateTime)
 	{
-		return  DayOfWeekOrder(Date.Day, Date.Month, Date.Year) == 6;
+		return  DayOfWeekOrder(DateTime.Day, DateTime.Month, DateTime.Year) == 6;
 	}
 
 	short IsEndOfWeek()
@@ -966,10 +1026,10 @@ public:
 		return IsEndOfWeek(*this);
 	}
 
-	static bool IsWeekEnd(clsDate Date)
+	static bool IsWeekEnd(clsDate DateTime)
 	{
 		//Weekends are Fri and Sat
-		short DayIndex = DayOfWeekOrder(Date.Day, Date.Month, Date.Year);
+		short DayIndex = DayOfWeekOrder(DateTime.Day, DateTime.Month, DateTime.Year);
 		return  (DayIndex == 5 || DayIndex == 6);
 	}
 
@@ -978,7 +1038,7 @@ public:
 		return  IsWeekEnd(*this);
 	}
 
-	static bool IsBusinessDay(clsDate Date)
+	static bool IsBusinessDay(clsDate DateTime)
 	{
 		//Weekends are Sun,Mon,Tue,Wed and Thur
 
@@ -988,7 +1048,7 @@ public:
 	   */
 
 	   //shorter method is to invert the IsWeekEnd: this will save updating code.
-		return !IsWeekEnd(Date);
+		return !IsWeekEnd(DateTime);
 
 	}
 
@@ -997,9 +1057,9 @@ public:
 		return  IsBusinessDay(*this);
 	}
 
-	static short DaysUntilTheEndOfWeek(clsDate Date)
+	static short DaysUntilTheEndOfWeek(clsDate DateTime)
 	{
-		return 6 - DayOfWeekOrder(Date.Day, Date.Month, Date.Year);
+		return 6 - DayOfWeekOrder(DateTime.Day, DateTime.Month, DateTime.Year);
 	}
 
 	short DaysUntilTheEndOfWeek()

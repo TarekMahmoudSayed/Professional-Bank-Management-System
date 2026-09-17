@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include "clsDate.h"
 #include "Global.h"
 
 using namespace std;
@@ -19,9 +20,19 @@ protected :
 		}
 
 		cout << "\t\t\t\t\t______________________________________" << endl;
+
+		_AddDateAndCurrentLoginUser();
+
 	}
 
-	static bool CheckAccessRights(clsUser::enPermissions Permission) {
+	static void _AddDateAndCurrentLoginUser() {
+
+		cout << "\n\t\t\t\t\tUser: " << CurrentUser.getUserName() << endl;
+		cout << "\t\t\t\t\tDate: " << clsDate::DateToString(clsDate::GetSystemDate()) <<endl<< endl;
+
+	}
+
+	static bool _CheckAccessRights(clsUser::enPermissions Permission) {
 
 		if (!CurrentUser.CheckAccessPermission(Permission))
 		{

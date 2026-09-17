@@ -368,12 +368,14 @@
             "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsdepositscreen.h",
             "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clswithdrawscreen.h",
             "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clstotalbalancesscreen.h",
+            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clstransferscreen.h",
             "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsmanageusersscreen.h",
             "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clslistusersscreen.h",
             "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsaddnewuserscreen.h",
             "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsdeleteuserscreen.h",
             "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsupdateuserscreen.h",
-            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsfinduserscreen.h"
+            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsfinduserscreen.h",
+            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsloginregisterscreen.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

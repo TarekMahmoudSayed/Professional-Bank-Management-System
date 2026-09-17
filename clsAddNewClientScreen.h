@@ -46,7 +46,7 @@ public :
 
 	static void AddNewClient() {
 
-		if (!clsScreen::CheckAccessRights(clsUser::enPermissions::pAddNewClient)) {
+		if (!clsScreen::_CheckAccessRights(clsUser::enPermissions::pAddNewClient)) {
 			return;
 		}
 
