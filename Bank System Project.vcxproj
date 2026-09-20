@@ -140,9 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bank System Project.cpp" />
-    <ClCompile Include="clsDeleteUserScreen.cpp" />
     <ClCompile Include="clsPerson.cpp" />
-    <ClCompile Include="clsTotalBalancesScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clsAddNewClientScreen.h" />
@@ -153,12 +151,14 @@
     <ClInclude Include="clsCurrenciesListScreen.h" />
     <ClInclude Include="clsCurrency.h" />
     <ClInclude Include="clsCurrencyExchangeMainScreen.h" />
+    <ClInclude Include="clsDate.h" />
     <ClInclude Include="clsDeleteClientScreen.h" />
     <ClInclude Include="clsDeleteUserScreen.h" />
     <ClInclude Include="clsDepositScreen.h" />
     <ClInclude Include="clsFindClientScreen.h" />
     <ClInclude Include="clsFindCurrencyScreen.h" />
     <ClInclude Include="clsFindUserScreen.h" />
+    <ClInclude Include="clsInputValidate.h" />
     <ClInclude Include="clsListUsersScreen.h" />
     <ClInclude Include="clsLoginRegisterScreen.h" />
     <ClInclude Include="clsLoginScreen.h" />
@@ -166,6 +166,7 @@
     <ClInclude Include="clsManageUsersScreen.h" />
     <ClInclude Include="clsPerson.h" />
     <ClInclude Include="clsScreen.h" />
+    <ClInclude Include="clsString.h" />
     <ClInclude Include="clsTotalBalancesScreen.h" />
     <ClInclude Include="clsTransactionsScreen.h" />
     <ClInclude Include="clsTransferLogsScreen.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="clsUpdateCurrencyScreen.h" />
     <ClInclude Include="clsUpdateUserScreen.h" />
     <ClInclude Include="clsUser.h" />
+    <ClInclude Include="clsUtil.h" />
     <ClInclude Include="clsWithdrawScreen.h" />
     <ClInclude Include="Global.h" />
   </ItemGroup>

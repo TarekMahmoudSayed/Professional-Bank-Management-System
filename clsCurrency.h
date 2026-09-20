@@ -220,13 +220,17 @@ public :
 
 	double ConvertToUSD(double Amount) {
 
-		return (Amount / _Rate);
+		return double(Amount / _Rate);
 
 	}
 
-	 double ConvertToAnotherCurrency(double Amount, clsCurrency Currency2) {
+	 double ConvertToOtherCurrency(double Amount, clsCurrency Currency2) {
 
 		 double Tem = ConvertToUSD(Amount);
+
+		 if (Currency2.CurrencyCode() == "USD") {
+			 return Tem;
+		 }
 
 		 return Tem * Currency2.Rate();
 

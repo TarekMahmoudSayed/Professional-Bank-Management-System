@@ -17,28 +17,41 @@ class clsCurrecnyCalculatorScreen : protected clsScreen{
 
     */
 
-	static string _ReadCurrency1Code() {
+	static clsCurrency _GetCurrency(string Message) {
 
 		string CurrencyCode;
 
-		cout << "\nPlease Enter Currency1 Code ? ";
+		cout << Message;
 		CurrencyCode = clsInputValidate::ReadString();
 
-		return (CurrencyCode);
+		clsCurrency Currency1 = clsCurrency::FindByCode(CurrencyCode);
+
+		while (Currency1.IsEmpty()) {
+			cout << "\nCurrency Not Found :-(" << endl;
+			cout << Message;
+			CurrencyCode = clsInputValidate::ReadString();
+			Currency1 = clsCurrency::FindByCode(CurrencyCode);
+
+		}
+
+
+		return Currency1;
 	}
 
-	static string _ReadCurrency2Code() {
+	static double ReadAmount() {
 
-		string CurrencyCode;
+		double Amount = 0;
 
-		cout << "\nPlease Enter Currency2 Code ? ";
-		CurrencyCode = clsInputValidate::ReadString();
+		cout << "\nEnter Amount To Exchange: ";
+		Amount = clsInputValidate::ReadDblNumber();
 
-		return (CurrencyCode);
+		return Amount;
+
 	}
 
-	static void _PrintCurrencyCard(clsCurrency Currency) {
+	static void _PrintCurrencyCard(clsCurrency Currency, string Title = "Currency Card") {
 
+		cout << "\n" << Title << endl;
 		cout << "---------------------------" << endl;
 		cout << "Country : " << Currency.Country() << endl;
 		cout << "Code    : " << Currency.CurrencyCode() << endl;
@@ -48,9 +61,29 @@ class clsCurrecnyCalculatorScreen : protected clsScreen{
 
 	}
 
-	static void PrintResultLine(string From, string To, double Amount, double Ans) {
+	static void _PrintCalculationsResults(float Amount, clsCurrency Currency1, clsCurrency Currency2)
+	{
 
-		cout << "\n" << Amount << " " << From << " = " << Ans << " " << To << endl;
+		_PrintCurrencyCard(Currency1, "Convert From:");
+
+		float AmountInUSD = Currency1.ConvertToUSD(Amount);
+
+		cout << Amount << " " << Currency1.CurrencyCode()
+			<< " = " << AmountInUSD << " USD\n";
+
+		if (Currency2.CurrencyCode() == "USD")
+		{
+			return;
+		}
+
+		cout << "\nConverting from USD to:\n";
+
+		_PrintCurrencyCard(Currency2, "To:");
+
+		float AmountInCurrrency2 = Currency1.ConvertToOtherCurrency(Amount, Currency2);
+
+		cout << Amount << " " << Currency1.CurrencyCode()
+			<< " = " << AmountInCurrrency2 << " " << Currency2.CurrencyCode();
 
 	}
 
@@ -66,63 +99,20 @@ public :
 
 			clsScreen::_DrawScreenHeader("Currency Calculator Screen");
 
-			clsCurrency Currency1 = clsCurrency::FindByCode(_ReadCurrency1Code());
+			clsCurrency Currency1 = _GetCurrency("\nPlease Enter Currency1 Code ? ");
 
-			while (Currency1.IsEmpty()) {
-				cout << "\nCurrency1 Not Found :-(" << endl;
-				Currency1 = clsCurrency::FindByCode(_ReadCurrency1Code());
+			clsCurrency Currency2 = _GetCurrency("\nPlease Enter Currency2 Code ? ");
+			
+			double Amount = ReadAmount();
 
-			}
+			_PrintCalculationsResults(Amount, Currency1, Currency2);
 
-			clsCurrency Currency2 = clsCurrency::FindByCode(_ReadCurrency2Code());
-
-			while (Currency2.IsEmpty()) {
-				cout << "\nCurrency2 Not Found :-(" << endl;
-				Currency2 = clsCurrency::FindByCode(_ReadCurrency2Code());
-
-			}
-
-			cout << "\nEnter Amount To Exchange: ";
-			double Amount = clsInputValidate::ReadDblNumber();
-
-			cout << "\nConvert From : " << endl;
-
-			if (Currency2.CurrencyCode() == "USD") {
-
-				_PrintCurrencyCard(Currency1);
-
-				PrintResultLine(Currency1.CurrencyCode(), Currency2.CurrencyCode(), Amount, Currency1.ConvertToUSD(Amount));
-
-			}
-			else if (Currency1.CurrencyCode() == "USD") {
-
-				_PrintCurrencyCard(Currency1);
-
-				PrintResultLine(Currency1.CurrencyCode(), Currency2.CurrencyCode(), Amount, Currency2.Rate() * Amount);
-
-			}
-			else {
-
-				_PrintCurrencyCard(Currency1);
-
-				PrintResultLine(Currency1.CurrencyCode(), "USD", Amount, Currency1.ConvertToUSD(Amount));
-
-				cout << "\nTo : " << endl;
-
-				_PrintCurrencyCard(Currency2);
-
-				PrintResultLine(Currency1.CurrencyCode(), Currency2.CurrencyCode(), Amount, Currency1.ConvertToAnotherCurrency(Amount, Currency2));
-
-				
-			}
-
-			cout << "\nDo you want to perform another calculation [y/n] ? ";
+			cout << "\n\nDo you want to perform another calculation [y/n] ? ";
 			cin >> c;
 
 
 		}
 
-        
 
     }
 

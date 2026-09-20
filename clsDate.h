@@ -1,4 +1,3 @@
-
 #pragma warning(disable : 4996)
 #pragma once
 
@@ -8,8 +7,7 @@
 
 using namespace std;
 
-class clsDate
-{
+class clsDate {
 
 private:
 
