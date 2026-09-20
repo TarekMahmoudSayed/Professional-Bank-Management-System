@@ -26,7 +26,7 @@ class clsLoginScreen : protected clsScreen{
 			string Password = clsInputValidate::ReadString();
 
 			CurrentUser = clsUser::Find(UserName, Password);
-			LoginFaild = CurrentUser.isEmpty();
+			LoginFaild = CurrentUser.IsEmpty();
 
 
 		} while (LoginFaild && --Trials);

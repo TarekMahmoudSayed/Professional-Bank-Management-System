@@ -46,7 +46,7 @@ public :
 
 		clsUser User = clsUser::Find(UserName);
 
-		if (!User.isEmpty()) {
+		if (!User.IsEmpty()) {
 			cout << "\nUser Found :-) " << endl;
 		}
 		else {

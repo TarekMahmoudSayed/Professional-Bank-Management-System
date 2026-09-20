@@ -1,7 +1,7 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clswithdrawscreen.h",
+        "Source": "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsupdatecurrencyscreen.h",
         "ProvidedModule": "",
         "Includes": [
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\iostream",
@@ -352,8 +352,8 @@
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\mcx.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\imm.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\ime_cmodes.h",
-            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsbankclient.h",
-            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsinputvalidate.h"
+            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsinputvalidate.h",
+            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clscurrency.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

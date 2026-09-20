@@ -299,7 +299,7 @@ public :
 		return _AccountBalance;
 	}
 
-	bool isEmpty() {
+	bool IsEmpty() {
 		return _Mode == enMode::EmptyMode;
 	}
 
@@ -384,7 +384,7 @@ public :
 
 		clsBankClient Client = Find(AccountNumber);
 
-		return (!Client.isEmpty());
+		return (!Client.IsEmpty());
 		
 	}
 

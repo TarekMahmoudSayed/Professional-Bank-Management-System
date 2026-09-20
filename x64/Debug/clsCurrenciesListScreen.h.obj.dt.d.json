@@ -1,7 +1,7 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clswithdrawscreen.h",
+        "Source": "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clscurrencieslistscreen.h",
         "ProvidedModule": "",
         "Includes": [
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\iostream",
@@ -128,16 +128,17 @@
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\clocale",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\locale.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\ostream",
-            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsscreen.h",
-            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsdate.h",
-            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\string",
-            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsstring.h",
+            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clscurrency.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\vector",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\__msvc_bit_utils.hpp",
-            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\global.h",
-            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsuser.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\fstream",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\__msvc_filebuf.hpp",
+            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\string",
+            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsstring.h",
+            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsscreen.h",
+            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsdate.h",
+            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\global.h",
+            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsuser.h",
             "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsperson.h",
             "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsutil.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\windows.h",
@@ -351,9 +352,7 @@
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\winsvc.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\mcx.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\imm.h",
-            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\ime_cmodes.h",
-            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsbankclient.h",
-            "c:\\users\\domain\\source\\repos\\bank system project\\bank system project\\clsinputvalidate.h"
+            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\ime_cmodes.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

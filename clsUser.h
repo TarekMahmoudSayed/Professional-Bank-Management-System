@@ -250,7 +250,7 @@ public :
 		return _Permissions;
 	}
 
-	bool isEmpty() {
+	bool IsEmpty() {
 		return (_Mode == enMode::EmptyMode);
 	}
 
@@ -288,12 +288,12 @@ public :
 
 	static bool isUserExist(string UserName) {
 		clsUser User = Find(UserName);
-		return !User.isEmpty();
+		return !User.IsEmpty();
 	}
 
 	static bool isUserExist(string UserName, string Password) {
 		clsUser User = Find(UserName, Password);
-		return !User.isEmpty();
+		return !User.IsEmpty();
 	}
 
 	static clsUser GetAddNewUserObject(string UserName) {
